@@ -40,16 +40,9 @@ header h1 {
   background: black;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 14px 28px;
-  border-radius: 10px;
-  font-weight: bold;
-  text-decoration: none;
-  background: #5865F2;
-  color: white;
-  transition: 0.2s ease;
+.btn i {
+  margin-right: 8px;
+  font-size: 1.2em;
 }
 
 .btn:hover {
