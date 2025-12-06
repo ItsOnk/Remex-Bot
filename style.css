@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #0f1115;
+  color: #e5e7eb;
+  text-align: center;
+}
+
+header {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+}
+
+header h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.invite {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 28px;
+  text-decoration: none;
+  color: white;
+  background: #111827;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.invite:hover {
+  transform: scale(1.05);
+  background: black;
+}
+
+section {
+  padding: 40px 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 10px 0;
+}
+
+footer {
+  padding: 15px;
+  opacity: 0.6;
+}
