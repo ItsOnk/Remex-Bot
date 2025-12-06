@@ -16,6 +16,13 @@ header h1 {
   margin-bottom: 10px;
 }
 
+
+
+
+
+
+
+
 .invite {
   display: inline-block;
   margin-top: 20px;
@@ -32,6 +39,26 @@ header h1 {
   transform: scale(1.05);
   background: black;
 }
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #5865F2;
+  color: white;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+
+
 
 section {
   padding: 40px 20px;
