@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="style.css">
+
+
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Renex Bot Status</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  background: #0d1117;
+  color: white;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.panel {
+  background: linear-gradient(145deg, #0d1117, #161b22);
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+  border-radius: 14px;
+  padding: 25px;
+  min-width: 340px;
+  border: 1px solid #30363d;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4em;
+  margin-bottom: 15px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: gray;
+}
+
+.online { color: #00ff9c; }
+.online .dot { background: #00ff9c; box-shadow: 0 0 10px #00ff9c; }
+
+.offline { color: crimson; }
+.offline .dot { background: crimson; box-shadow: 0 0 10px crimson; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.card {
+  background: #0d1117;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+  text-align: center;
+}
+
+a {
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #00ff9c;
+}
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <h1>Renex Bot Status</h1>
+
+  <div class="status" id="status">
+    <span class="dot"></span>
+    <span id="statustext">Checking...</span>
+  </div>
+
+  <div class="grid">
+    <div class="card"><strong>Ping:</strong><br><span id="ping">--</span> ms</div>
+    <div class="card"><strong>Uptime:</strong><br><span id="uptime">--</span></div>
+    <div class="card"><strong>Servers:</strong><br><span id="guilds">--</span></div>
+    <div class="card"><strong>Version:</strong><br><span id="version">v1.0.0</span></div>
+  </div>
+
+  <a href="index.html">← Back to site</a>
+</div>
+
+<script>
+async function loadStatus() {
+  try {
+    const res = await fetch("status.json"); // we'll change this later
+    const data = await res.json();
+
+    const status = document.getElementById("status");
+    const text = document.getElementById("statustext");
+
+    text.textContent = data.status;
+    status.className = "status " + data.status.toLowerCase();
+
+    document.getElementById("ping").textContent = data.ping;
+    document.getElementById("uptime").textContent = data.uptime;
+    document.getElementById("guilds").textContent = data.guilds;
+    document.getElementById("version").textContent = data.version;
+
+  } catch {
+    document.getElementById("statustext").textContent = "Offline";
+    document.getElementById("status").className = "status offline";
+  }
+}
+
+loadStatus();
+setInterval(loadStatus, 5000);
+</script>
+
+</body>
+</html>
