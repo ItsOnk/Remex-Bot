@@ -40,10 +40,35 @@ header h1 {
   background: black;
 }
 
-.btn i {
-  margin-right: 8px;
-  font-size: 1.2em;
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #24292e, #000);
+  color: white;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
+
+.github-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px #00ff9c;
+  background: linear-gradient(135deg, #000, #24292e);
+}
+
+.github-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.github-btn:hover svg {
+  transform: rotate(-10deg) scale(1.1);
+}
+
 
 .btn:hover {
   transform: scale(1.05);
