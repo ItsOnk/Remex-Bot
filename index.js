@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits, Collection, MessageFlags } from "discord.js";
 import "dotenv/config";
 import { loadCommands } from "./handlers/commandHandler.js";
-
+import updateGist from "./statushelper.js"; 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers]
 });
@@ -12,7 +12,18 @@ client.once("clientReady", async () => {
   console.log(`✅ Logged in as ${client.user.tag}`);
 
   await loadCommands(client);
+
+    // Update immediately on start
+    updateGist(client);
+
+    // Update every 10 seconds
+    setInterval(() => {
+        updateGist(client);
+    }, 10000);
 });
+
+
+
 
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
